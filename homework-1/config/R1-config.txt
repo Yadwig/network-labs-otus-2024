@@ -1,0 +1,164 @@
+!
+! Last configuration change at 18:22:25 UTC Sun Apr 7 2024
+! NVRAM config last updated at 17:52:59 UTC Sun Apr 7 2024
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$o7L0$2OKu/z/IfJ2yroZ56i/02.
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no shutdown
+ description Trunk to S1
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+ no mop enabled
+!
+interface GigabitEthernet0/0.3
+ no shutdown
+ description Default Gateway for VLAN 3 Management
+ encapsulation dot1Q 3
+ ip address 192.168.3.1 255.255.255.0
+!
+interface GigabitEthernet0/0.4
+ no shutdown
+ description Default Gateway for VLAN 4 Operations
+ encapsulation dot1Q 4
+ ip address 192.168.4.1 255.255.255.0
+!
+interface GigabitEthernet0/0.8
+ no shutdown
+ description Default Gateway for Native 8 Vlan
+ encapsulation dot1Q 8 native
+!
+interface GigabitEthernet0/1
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner motd ^CUnauthorized access to this device is prohibited!^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ password cisco
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end

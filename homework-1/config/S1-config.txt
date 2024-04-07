@@ -1,0 +1,174 @@
+!
+! Last configuration change at 17:43:01 GMT Sun Apr 7 2024
+! NVRAM config last updated at 17:44:56 GMT Sun Apr 7 2024
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname S1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$tB7E$72Yvct2wJd466DhZ0Oy4y/
+!
+no aaa new-model
+clock timezone GMT 3 0
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no shutdown
+ switchport trunk allowed vlan 3,4,8
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 8
+ switchport mode trunk
+ switchport nonegotiate
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ no shutdown
+ switchport trunk allowed vlan 3,4,8
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 8
+ switchport mode trunk
+ switchport nonegotiate
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ no shutdown
+ switchport access vlan 3
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ no shutdown
+ switchport access vlan 7
+ switchport mode access
+ shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ no shutdown
+ switchport access vlan 7
+ switchport mode access
+ shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ no shutdown
+ switchport access vlan 7
+ switchport mode access
+ shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ no shutdown
+ switchport access vlan 7
+ switchport mode access
+ shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ no shutdown
+ switchport access vlan 7
+ switchport mode access
+ shutdown
+ media-type rj45
+ negotiation auto
+!
+interface Vlan3
+ no shutdown
+ ip address 192.168.3.11 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner motd ^CUnauthorized access to this device is prohibited!^C
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ password cisco
+ login
+line vty 5 12
+ password cisco
+ login
+!
