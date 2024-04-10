@@ -1,6 +1,6 @@
 !
-! Last configuration change at 17:43:01 GMT Sun Apr 7 2024
-! NVRAM config last updated at 17:44:56 GMT Sun Apr 7 2024
+! Last configuration change at 18:18:46 GMT Sun Apr 7 2024
+! NVRAM config last updated at 18:28:09 GMT Sun Apr 7 2024
 !
 version 15.2
 service timestamps debug datetime msec
@@ -66,7 +66,6 @@ interface GigabitEthernet0/1
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 8
  switchport mode trunk
- switchport nonegotiate
  media-type rj45
  negotiation auto
 !
@@ -121,6 +120,7 @@ interface Vlan3
  no shutdown
  ip address 192.168.3.11 255.255.255.0
 !
+ip default-gateway 192.168.3.1
 ip forward-protocol nd
 !
 no ip http server

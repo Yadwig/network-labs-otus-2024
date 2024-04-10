@@ -1,5 +1,5 @@
 !
-! Last configuration change at 19:46:02 GMT Sun Apr 7 2024
+! Last configuration change at 20:04:21 GMT Sun Apr 7 2024
 !
 version 15.2
 service timestamps debug datetime msec
@@ -95,6 +95,7 @@ interface Vlan3
  no shutdown
  ip address 192.168.3.12 255.255.255.0
 !
+ip default-gateway 192.168.3.1
 ip forward-protocol nd
 !
 no ip http server
